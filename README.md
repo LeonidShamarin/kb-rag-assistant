@@ -30,7 +30,7 @@ cp .env.example .env
 
 .venv/Scripts/python main.py ingest               # побудувати індекс
 .venv/Scripts/python main.py ask "скільки днів відпустки?"
-.venv/Scripts/python main.py serve                # HTTP + веб-UI на :3000
+.venv/Scripts/python main.py serve                # HTTP + веб-UI на :7860
 ```
 
 Без API-ключа теж працює — на локальних моделях, повністю офлайн:
@@ -49,7 +49,7 @@ cp .env.example .env
 |---|---|
 | `ingest` | Читає корпус, ріже на чанки, рахує вектори, зберігає індекс |
 | `ask "<питання>"` | Одне питання; `--json` віддає повну відповідь зі схемою |
-| `serve` | FastAPI на :3000 — `GET /health`, `POST /ask`, веб-UI на `/` |
+| `serve` | FastAPI на :7860 — `GET /health`, `POST /ask`, веб-UI на `/` |
 | `eval` | Golden-набір; `--full` додає генерацію, без нього — лише пошук |
 | `matrix` | Порівнює конфігурації пошуку між собою, пише таблицю |
 
@@ -68,11 +68,14 @@ kernel-лімітом пам'яті (Windows Job Object) і пише вивід 
 
 ```bash
 docker build -t kb-rag .
-docker run --rm -p 3000:3000 --env-file .env kb-rag
+docker run --rm -p 7860:7860 --env-file .env kb-rag
 ```
 
 Індекс будується на старті контейнера, а не при збірці: інакше в образ потрапили б
 вектори, прив'язані до конкретної версії моделі.
+
+Порт береться з `PORT` (дефолт 7860) — саме його очікує Hugging Face Spaces від
+Docker-контейнера, і той самий образ працює локально без змін.
 
 ---
 

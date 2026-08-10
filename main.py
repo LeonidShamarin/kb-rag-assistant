@@ -3,7 +3,7 @@ CLI асистента по базі знань.
 
     python main.py ingest                       # побудувати індекс
     python main.py ask "скільки днів відпустки?"
-    python main.py serve                        # HTTP + веб-інтерфейс на :3000
+    python main.py serve                        # HTTP + веб-інтерфейс на :7860
     python main.py eval --full                  # прогнати golden-набір
     python main.py matrix                       # порівняти конфігурації пошуку
 
@@ -327,8 +327,9 @@ def parse_args() -> argparse.Namespace:
 
     p_serve = sub.add_parser("serve", help="Запустити HTTP-сервіс і веб-інтерфейс")
     p_serve.add_argument("--host", default="0.0.0.0")
-    # 3000 — вимога Coolify: його Traefik маршрутизує саме на цей порт.
-    p_serve.add_argument("--port", type=int, default=int(os.environ.get("PORT", 3000)))
+    # 7860 — порт, який Hugging Face Spaces очікує від Docker-контейнера.
+    # Береться з оточення, щоб той самий образ працював локально і в Space.
+    p_serve.add_argument("--port", type=int, default=int(os.environ.get("PORT", 7860)))
     add_config_args(p_serve)
     p_serve.set_defaults(func=cmd_serve)
 
