@@ -1,0 +1,21 @@
+.env
+.test-logs/
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg-info/
+.venv/
+venv/
+.vscode/
+.idea/
+
+# Індекс — похідний артефакт: будується з корпусу командою `ingest`
+# і прив'язаний до конкретної embedding-моделі.
+index/
+index-*/
+
+# Claude Code & MCP local configuration
+.claude/
+.claude.json
+.claude.json.backup
+CLAUDE.local.md

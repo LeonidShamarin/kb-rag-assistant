@@ -1,0 +1,12 @@
+﻿# Локальні embedding-моделі — потрібні ЛИШЕ для експерименту з порівняння
+# моделей (`--embed-provider st`). Тягне torch, ~2 ГБ, тому свідомо винесено
+# з основних залежностей і не потрапляє в Docker-образ.
+#
+#   pip install -r requirements-local.txt
+#   python main.py ingest --embed-provider st --embed-model intfloat/multilingual-e5-small
+#
+# Опційно: faiss-cpu для бекенда `--faiss`. На корпусі цього масштабу приросту
+# не дає (див. README), стоїть тут лише щоб інтерфейс можна було перевірити.
+
+sentence-transformers>=3.0
+faiss-cpu>=1.8

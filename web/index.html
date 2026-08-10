@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Асистент по базі знань</title>
+<style>
+  :root {
+    --bg: #f7f7f8; --panel: #ffffff; --ink: #1b1b1f; --muted: #6b6b76;
+    --line: #e3e3e8; --accent: #2f6f4f; --accent-soft: #eaf3ee;
+    --warn-bg: #fdf3e7; --warn-ink: #8a5a12; --radius: 12px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #16171a; --panel: #1e1f24; --ink: #ececf1; --muted: #9a9aa5;
+      --line: #2e3038; --accent: #6dbd93; --accent-soft: #1f2a24;
+      --warn-bg: #33270f; --warn-ink: #e0b96a;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font: 15px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  .wrap { max-width: 780px; margin: 0 auto; padding: 24px 16px 120px; }
+  header { padding: 8px 0 20px; border-bottom: 1px solid var(--line); margin-bottom: 20px; }
+  h1 { font-size: 20px; margin: 0 0 4px; }
+  .sub { color: var(--muted); font-size: 13px; }
+  .status { font-size: 12px; color: var(--muted); margin-top: 8px; font-variant-numeric: tabular-nums; }
+  .msg { margin-bottom: 18px; }
+  .q {
+    background: var(--accent-soft); border-radius: var(--radius);
+    padding: 10px 14px; display: inline-block; max-width: 100%;
+  }
+  .a { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px; margin-top: 10px; }
+  .a.refused { background: var(--warn-bg); border-color: transparent; color: var(--warn-ink); }
+  .a p { margin: 0 0 8px; white-space: pre-wrap; }
+  .cites { margin-top: 12px; border-top: 1px dashed var(--line); padding-top: 10px; }
+  .cites h4 { margin: 0 0 8px; font-size: 12px; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); }
+  details { margin-bottom: 6px; font-size: 13px; }
+  summary { cursor: pointer; color: var(--accent); }
+  details p { margin: 6px 0 0; padding-left: 12px; border-left: 2px solid var(--line); color: var(--muted); font-size: 13px; }
+  .meta { margin-top: 10px; font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+  form {
+    position: fixed; left: 0; right: 0; bottom: 0; background: var(--bg);
+    border-top: 1px solid var(--line); padding: 12px 16px;
+  }
+  .row { max-width: 780px; margin: 0 auto; display: flex; gap: 8px; }
+  input {
+    flex: 1; padding: 11px 14px; border-radius: var(--radius);
+    border: 1px solid var(--line); background: var(--panel); color: var(--ink); font: inherit;
+  }
+  button {
+    padding: 11px 18px; border: 0; border-radius: var(--radius);
+    background: var(--accent); color: #fff; font: inherit; cursor: pointer;
+  }
+  button:disabled { opacity: .5; cursor: default; }
+  .hints { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+  .hints button { background: var(--panel); color: var(--muted); border: 1px solid var(--line); font-size: 13px; padding: 6px 10px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Асистент по базі знань «Кодастра»</h1>
+    <div class="sub">Відповідає лише за внутрішніми регламентами і завжди показує джерело.</div>
+    <div class="status" id="status">завантаження…</div>
+  </header>
+
+  <div id="thread"></div>
+
+  <div class="hints" id="hints">
+    <button type="button">Скільки днів відпустки?</button>
+    <button type="button">Які добові в ЄС?</button>
+    <button type="button">Хто погоджує закупівлю на 1500 EUR?</button>
+    <button type="button">Яка столиця Франції?</button>
+  </div>
+</div>
+
+<form id="form">
+  <div class="row">
+    <input id="q" placeholder="Запитайте про регламент…" autocomplete="off" required>
+    <button id="send" type="submit">Спитати</button>
+  </div>
+</form>
+
+<script>
+const thread = document.getElementById('thread');
+const form = document.getElementById('form');
+const input = document.getElementById('q');
+const send = document.getElementById('send');
+
+fetch('/health').then(r => r.json()).then(h => {
+  document.getElementById('status').textContent =
+    `${h.documents} документів · ${h.chunks} чанків · пошук: ${h.retriever}${h.rerank ? ' + rerank' : ''} · ${h.embedder}`;
+}).catch(() => document.getElementById('status').textContent = 'сервіс недоступний');
+
+document.getElementById('hints').addEventListener('click', e => {
+  if (e.target.tagName === 'BUTTON') { input.value = e.target.textContent; form.requestSubmit(); }
+});
+
+function el(tag, cls, text) {
+  const n = document.createElement(tag);
+  if (cls) n.className = cls;
+  if (text !== undefined) n.textContent = text;
+  return n;
+}
+
+form.addEventListener('submit', async e => {
+  e.preventDefault();
+  const question = input.value.trim();
+  if (!question) return;
+  input.value = '';
+  send.disabled = true;
+
+  const block = el('div', 'msg');
+  block.appendChild(el('div', 'q', question));
+  const pending = el('div', 'a', 'шукаю у базі…');
+  block.appendChild(pending);
+  thread.appendChild(block);
+  window.scrollTo(0, document.body.scrollHeight);
+
+  try {
+    const res = await fetch('/ask', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ question })
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.detail || 'помилка сервісу');
+
+    pending.textContent = '';
+    pending.className = 'a' + (data.answered ? '' : ' refused');
+    pending.appendChild(el('p', null, data.answer));
+
+    if (data.citations && data.citations.length) {
+      const box = el('div', 'cites');
+      box.appendChild(el('h4', null, 'Джерела'));
+      data.citations.forEach(c => {
+        const d = document.createElement('details');
+        d.appendChild(el('summary', null, c.section ? `${c.doc_title} → ${c.section}` : c.doc_title));
+        d.appendChild(el('p', null, c.quote));
+        box.appendChild(d);
+      });
+      pending.appendChild(box);
+    }
+
+    const bits = [`${data.latency_ms} мс`];
+    if (data.prompt_tokens) bits.push(`${data.prompt_tokens + data.output_tokens} токенів`);
+    if (!data.answered && data.refusal_reason) bits.push(data.refusal_reason);
+    if (data.dropped_citations && data.dropped_citations.length)
+      bits.push(`відкинуто вигаданих цитат: ${data.dropped_citations.length}`);
+    pending.appendChild(el('div', 'meta', bits.join(' · ')));
+  } catch (err) {
+    pending.className = 'a refused';
+    pending.textContent = 'Помилка: ' + err.message;
+  } finally {
+    send.disabled = false;
+    input.focus();
+    window.scrollTo(0, document.body.scrollHeight);
+  }
+});
+</script>
+</body>
+</html>

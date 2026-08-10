@@ -1,0 +1,1589 @@
+[
+  {
+    "id": "Q01",
+    "type": "factual",
+    "question": "Скільки днів щорічної відпустки належить працівнику?",
+    "retrieved": [
+      "13-faq-pidtrymky",
+      "01-vidpustky-ta-likarnyani",
+      "01-vidpustky-ta-likarnyani",
+      "13-faq-pidtrymky",
+      "11-zvilnennya-ta-ofbording"
+    ],
+    "hit": true,
+    "answered": null,
+    "answer": "",
+    "facts_ok": null,
+    "forbidden_found": [],
+    "latency_ms": 0,
+    "error": null
+  },
+  {
+    "id": "Q02",
+    "type": "factual",
+    "question": "За скільки днів треба подати заявку на відпустку?",
+    "retrieved": [
+      "01-vidpustky-ta-likarnyani",
+      "09-zakupivli-ta-vytraty",
+      "13-faq-pidtrymky",
+      "13-faq-pidtrymky",
+      "01-vidpustky-ta-likarnyani"
+    ],
+    "hit": true,
+    "answered": null,
+    "answer": "",
+    "facts_ok": null,
+    "forbidden_found": [],
+    "latency_ms": 0,
+    "error": null
+  },
+  {
+    "id": "Q03",
+    "type": "factual",
+    "question": "Скільки невикористаних днів відпустки можна перенести на наступний рік і коли вони згорають?",
+    "retrieved": [
+      "01-vidpustky-ta-likarnyani",
+      "01-vidpustky-ta-likarnyani",
+      "11-zvilnennya-ta-ofbording",
+      "07-navchannya-ta-kompensatsii",
+      "01-vidpustky-ta-likarnyani"
+    ],
+    "hit": true,
+    "answered": null,
+    "answer": "",
+    "facts_ok": null,
+    "forbidden_found": [],
+    "latency_ms": 0,
+    "error": null
+  },
+  {
+    "id": "Q04",
+    "type": "factual",
+    "question": "Скільки днів на рік можна взяти за власний рахунок?",
+    "retrieved": [
+      "01-vidpustky-ta-likarnyani",
+      "07-navchannya-ta-kompensatsii",
+      "01-vidpustky-ta-likarnyani",
+      "13-faq-pidtrymky",
+      "01-vidpustky-ta-likarnyani"
+    ],
+    "hit": true,
+    "answered": null,
+    "answer": "",
+    "facts_ok": null,
+    "forbidden_found": [],
+    "latency_ms": 0,
+    "error": null
+  },
+  {
+    "id": "Q05",
+    "type": "factual",
+    "question": "До котрої години треба повідомити керівника, якщо я захворів?",
+    "retrieved": [
+      "06-informatsiyna-bezpeka",
+      "02-viddalena-robota",
+      "13-faq-pidtrymky",
+      "08-robochyi-chas-ta-oblik",
+      "08-robochyi-chas-ta-oblik"
+    ],
+    "hit": false,
+    "answered": null,
+    "answer": "",
+    "facts_ok": null,
+    "forbidden_found": [],
+    "latency_ms": 0,
+    "error": null
+  },
+  {
+    "id": "Q06",
+    "type": "factual",
+    "question": "Скільки днів лікарняного оплачує компанія, а далі хто?",
+    "retrieved": [
+      "01-vidpustky-ta-likarnyani",
+      "13-faq-pidtrymky",
+      "11-zvilnennya-ta-ofbording",
+      "13-faq-pidtrymky",
+      "08-robochyi-chas-ta-oblik"
+    ],
+    "hit": true,
+    "answered": null,
+    "answer": "",
+    "facts_ok": null,
+    "forbidden_found": [],
+    "latency_ms": 0,
+    "error": null
+  },
+  {
+    "id": "Q07",
+    "type": "factual",
+    "question": "Скільки sick days без лікарняного можна взяти за рік?",
+    "retrieved": [
+      "01-vidpustky-ta-likarnyani",
+      "01-vidpustky-ta-likarnyani",
+      "13-faq-pidtrymky",
+      "01-vidpustky-ta-likarnyani",
+      "02-viddalena-robota"
+    ],
+    "hit": true,
+    "answered": null,
+    "answer": "",
+    "facts_ok": null,
+    "forbidden_found": [],
+    "latency_ms": 0,
+    "error": null
+  },
+  {
+    "id": "Q08",
+    "type": "factual",
+    "question": "Скільки днів на тиждень можна працювати віддалено без окремого погодження?",
+    "retrieved": [
+      "02-viddalena-robota",
+      "13-faq-pidtrymky",
+      "02-viddalena-robota",
+      "02-viddalena-robota",
+      "13-faq-pidtrymky"
+    ],
+    "hit": true,
+    "answered": null,
+    "answer": "",
+    "facts_ok": null,
+    "forbidden_found": [],
+    "latency_ms": 0,
+    "error": null
+  },
+  {
+    "id": "Q09",
+    "type": "factual",
+    "question": "Скільки днів на рік дозволено працювати з-за кордону?",
+    "retrieved": [
+      "02-viddalena-robota",
+      "13-faq-pidtrymky",
+      "05-obladnannya-ta-it",
+      "01-vidpustky-ta-likarnyani",
+      "02-viddalena-robota"
+    ],
+    "hit": true,
+    "answered": null,
+    "answer": "",
+    "facts_ok": null,
+    "forbidden_found": [],
+    "latency_ms": 0,
+    "error": null
+  },
+  {
+    "id": "Q10",
+    "type": "factual",
+    "question": "За скільки днів треба попередити про виїзд за кордон і чому саме за стільки?",
+    "retrieved": [
+      "04-onbording",
+      "02-viddalena-robota",
+      "11-zvilnennya-ta-ofbording",
+      "06-informatsiyna-bezpeka",
+      "13-faq-pidtrymky"
+    ],
+    "hit": true,
+    "answered": null,
+    "answer": "",
+    "facts_ok": null,
+    "forbidden_found": [],
+    "latency_ms": 0,
+    "error": null
+  },
+  {
+    "id": "Q11",
+    "type": "factual",
+    "question": "Яка мінімальна швидкість інтернету потрібна для віддаленої роботи?",
+    "retrieved": [
+      "12-vnutrishni-servisy",
+      "02-viddalena-robota",
+      "06-informatsiyna-bezpeka",
+      "07-navchannya-ta-kompensatsii",
+      "12-vnutrishni-servisy"
+    ],
+    "hit": true,
+    "answered": null,
+    "answer": "",
+    "facts_ok": null,
+    "forbidden_found": [],
+    "latency_ms": 0,
+    "error": null
+  },
+  {
+    "id": "Q12",
+    "type": "factual",
+    "question": "Чи можна працювати з кафе через публічний Wi-Fi?",
+    "retrieved": [
+      "02-viddalena-robota",
+      "13-faq-pidtrymky",
+      "02-viddalena-robota",
+      "13-faq-pidtrymky",
+      "13-faq-pidtrymky"
+    ],
+    "hit": true,
+    "answered": null,
+    "answer": "",
+    "facts_ok": null,
+    "forbidden_found": [],
+    "latency_ms": 0,
+    "error": null
+  },
+  {
+    "id": "Q13",
+    "type": "factual",
+    "question": "Яка компенсація домашнього інтернету?",
+    "retrieved": [
+      "02-viddalena-robota",
+      "12-vnutrishni-servisy",
+      "08-robochyi-chas-ta-oblik",
+      "06-informatsiyna-bezpeka",
+      "01-vidpustky-ta-likarnyani"
+    ],
+    "hit": true,
+    "answered": null,
+    "answer": "",
+    "facts_ok": null,
+    "forbidden_found": [],
+    "latency_ms": 0,
+    "error": null
+  },
+  {
+    "id": "Q14",
+    "type": "factual",
+    "question": "Які добові при відрядженні в країни ЄС?",
+    "retrieved": [
+      "03-vidryadzhennya",
+      "10-performance-review",
+      "05-obladnannya-ta-it",
+      "12-vnutrishni-servisy",
+      "01-vidpustky-ta-likarnyani"
+    ],
+    "hit": true,
+    "answered": null,
+    "answer": "",
+    "facts_ok": null,
+    "forbidden_found": [],
+    "latency_ms": 0,
+    "error": null
+  },
+  {
+    "id": "Q15",
+    "type": "factual",
+    "question": "Скільки добових платять за день відрядження всередині України?",
+    "retrieved": [
+      "03-vidryadzhennya",
+      "03-vidryadzhennya",
+      "11-zvilnennya-ta-ofbording",
+      "03-vidryadzhennya",
+      "08-robochyi-chas-ta-oblik"
+    ],
+    "hit": true,
+    "answered": null,
+    "answer": "",
+    "facts_ok": null,
+    "forbidden_found": [],
+    "latency_ms": 0,
+    "error": null
+  },
+  {
+    "id": "Q16",
+    "type": "factual",
+    "question": "Коли дозволений бізнес-клас у літаку?",
+    "retrieved": [
+      "03-vidryadzhennya",
+      "03-vidryadzhennya",
+      "06-informatsiyna-bezpeka",
+      "11-zvilnennya-ta-ofbording",
+      "08-robochyi-chas-ta-oblik"
+    ],
+    "hit": true,
+    "answered": null,
+    "answer": "",
+    "facts_ok": null,
+    "forbidden_found": [],
+    "latency_ms": 0,
+    "error": null
+  },
+  {
+    "id": "Q17",
+    "type": "factual",
+    "question": "За скільки днів після повернення треба подати авансовий звіт?",
+    "retrieved": [
+      "03-vidryadzhennya",
+      "13-faq-pidtrymky",
+      "13-faq-pidtrymky",
+      "01-vidpustky-ta-likarnyani",
+      "13-faq-pidtrymky"
+    ],
+    "hit": true,
+    "answered": null,
+    "answer": "",
+    "facts_ok": null,
+    "forbidden_found": [],
+    "latency_ms": 0,
+    "error": null
+  },
+  {
+    "id": "Q18",
+    "type": "factual",
+    "question": "Чи компенсують алкоголь у рахунку з ресторану під час відрядження?",
+    "retrieved": [
+      "03-vidryadzhennya",
+      "03-vidryadzhennya",
+      "02-viddalena-robota",
+      "08-robochyi-chas-ta-oblik",
+      "13-faq-pidtrymky"
+    ],
+    "hit": true,
+    "answered": null,
+    "answer": "",
+    "facts_ok": null,
+    "forbidden_found": [],
+    "latency_ms": 0,
+    "error": null
+  },
+  {
+    "id": "Q19",
+    "type": "factual",
+    "question": "Яка максимальна вартість готелю за ніч у Європі?",
+    "retrieved": [
+      "03-vidryadzhennya",
+      "03-vidryadzhennya",
+      "08-robochyi-chas-ta-oblik",
+      "07-navchannya-ta-kompensatsii",
+      "06-informatsiyna-bezpeka"
+    ],
+    "hit": true,
+    "answered": null,
+    "answer": "",
+    "facts_ok": null,
+    "forbidden_found": [],
+    "latency_ms": 0,
+    "error": null
+  },
+  {
+    "id": "Q20",
+    "type": "factual",
+    "question": "Скільки триває випробувальний термін для позиції Lead?",
+    "retrieved": [
+      "04-onbording",
+      "04-onbording",
+      "13-faq-pidtrymky",
+      "11-zvilnennya-ta-ofbording",
+      "10-performance-review"
+    ],
+    "hit": true,
+    "answered": null,
+    "answer": "",
+    "facts_ok": null,
+    "forbidden_found": [],
+    "latency_ms": 0,
+    "error": null
+  },
+  {
+    "id": "Q21",
+    "type": "factual",
+    "question": "Скільки платять buddy за супровід новачка?",
+    "retrieved": [
+      "04-onbording",
+      "13-faq-pidtrymky",
+      "04-onbording",
+      "04-onbording",
+      "01-vidpustky-ta-likarnyani"
+    ],
+    "hit": true,
+    "answered": null,
+    "answer": "",
+    "facts_ok": null,
+    "forbidden_found": [],
+    "latency_ms": 0,
+    "error": null
+  },
+  {
+    "id": "Q22",
+    "type": "factual",
+    "question": "Що потрібно пройти, щоб отримати доступ до продакшн-середовищ новачку?",
+    "retrieved": [
+      "04-onbording",
+      "04-onbording",
+      "12-vnutrishni-servisy",
+      "09-zakupivli-ta-vytraty",
+      "08-robochyi-chas-ta-oblik"
+    ],
+    "hit": true,
+    "answered": null,
+    "answer": "",
+    "facts_ok": null,
+    "forbidden_found": [],
+    "latency_ms": 0,
+    "error": null
+  },
+  {
+    "id": "Q23",
+    "type": "factual",
+    "question": "Як часто оновлюють робочий ноутбук?",
+    "retrieved": [
+      "08-robochyi-chas-ta-oblik",
+      "07-navchannya-ta-kompensatsii",
+      "13-faq-pidtrymky",
+      "11-zvilnennya-ta-ofbording",
+      "05-obladnannya-ta-it"
+    ],
+    "hit": true,
+    "answered": null,
+    "answer": "",
+    "facts_ok": null,
+    "forbidden_found": [],
+    "latency_ms": 0,
+    "error": null
+  },
+  {
+    "id": "Q24",
+    "type": "factual",
+    "question": "За скільки відсотків можна викупити старий ноутбук після трьох років?",
+    "retrieved": [
+      "05-obladnannya-ta-it",
+      "13-faq-pidtrymky",
+      "13-faq-pidtrymky",
+      "13-faq-pidtrymky",
+      "11-zvilnennya-ta-ofbording"
+    ],
+    "hit": true,
+    "answered": null,
+    "answer": "",
+    "facts_ok": null,
+    "forbidden_found": [],
+    "latency_ms": 0,
+    "error": null
+  },
+  {
+    "id": "Q25",
+    "type": "factual",
+    "question": "Яка компенсація за використання власного ноутбука для роботи?",
+    "retrieved": [
+      "05-obladnannya-ta-it",
+      "12-vnutrishni-servisy",
+      "02-viddalena-robota",
+      "11-zvilnennya-ta-ofbording",
+      "07-navchannya-ta-kompensatsii"
+    ],
+    "hit": true,
+    "answered": null,
+    "answer": "",
+    "facts_ok": null,
+    "forbidden_found": [],
+    "latency_ms": 0,
+    "error": null
+  },
+  {
+    "id": "Q26",
+    "type": "factual",
+    "question": "Який час першої реакції на тікет пріоритету critical?",
+    "retrieved": [
+      "05-obladnannya-ta-it",
+      "04-onbording",
+      "09-zakupivli-ta-vytraty",
+      "04-onbording",
+      "13-faq-pidtrymky"
+    ],
+    "hit": true,
+    "answered": null,
+    "answer": "",
+    "facts_ok": null,
+    "forbidden_found": [],
+    "latency_ms": 0,
+    "error": null
+  },
+  {
+    "id": "Q27",
+    "type": "factual",
+    "question": "Яка мінімальна довжина пароля?",
+    "retrieved": [
+      "06-informatsiyna-bezpeka",
+      "08-robochyi-chas-ta-oblik",
+      "02-viddalena-robota",
+      "06-informatsiyna-bezpeka"
+    ],
+    "hit": true,
+    "answered": null,
+    "answer": "",
+    "facts_ok": null,
+    "forbidden_found": [],
+    "latency_ms": 0,
+    "error": null
+  },
+  {
+    "id": "Q28",
+    "type": "factual",
+    "question": "Чи можна використовувати SMS як другий фактор автентифікації?",
+    "retrieved": [
+      "09-zakupivli-ta-vytraty",
+      "13-faq-pidtrymky",
+      "13-faq-pidtrymky",
+      "13-faq-pidtrymky",
+      "06-informatsiyna-bezpeka"
+    ],
+    "hit": true,
+    "answered": null,
+    "answer": "",
+    "facts_ok": null,
+    "forbidden_found": [],
+    "latency_ms": 0,
+    "error": null
+  },
+  {
+    "id": "Q29",
+    "type": "factual",
+    "question": "Чи треба міняти пароль раз на три місяці за розкладом?",
+    "retrieved": [
+      "06-informatsiyna-bezpeka",
+      "13-faq-pidtrymky",
+      "02-viddalena-robota",
+      "06-informatsiyna-bezpeka",
+      "04-onbording"
+    ],
+    "hit": true,
+    "answered": null,
+    "answer": "",
+    "facts_ok": null,
+    "forbidden_found": [],
+    "latency_ms": 0,
+    "error": null
+  },
+  {
+    "id": "Q30",
+    "type": "factual",
+    "question": "Що буде, якщо я сам зізнаюсь, що через мою помилку стався інцидент безпеки?",
+    "retrieved": [
+      "13-faq-pidtrymky",
+      "06-informatsiyna-bezpeka",
+      "13-faq-pidtrymky",
+      "05-obladnannya-ta-it",
+      "10-performance-review"
+    ],
+    "hit": true,
+    "answered": null,
+    "answer": "",
+    "facts_ok": null,
+    "forbidden_found": [],
+    "latency_ms": 0,
+    "error": null
+  },
+  {
+    "id": "Q31",
+    "type": "factual",
+    "question": "На скільки днів максимум видається тимчасовий доступ?",
+    "retrieved": [
+      "06-informatsiyna-bezpeka",
+      "13-faq-pidtrymky",
+      "04-onbording",
+      "12-vnutrishni-servisy",
+      "12-vnutrishni-servisy"
+    ],
+    "hit": true,
+    "answered": null,
+    "answer": "",
+    "facts_ok": null,
+    "forbidden_found": [],
+    "latency_ms": 0,
+    "error": null
+  },
+  {
+    "id": "Q32",
+    "type": "factual",
+    "question": "Який річний бюджет на навчання і чи переноситься він на наступний рік?",
+    "retrieved": [
+      "07-navchannya-ta-kompensatsii",
+      "01-vidpustky-ta-likarnyani",
+      "03-vidryadzhennya",
+      "07-navchannya-ta-kompensatsii",
+      "09-zakupivli-ta-vytraty"
+    ],
+    "hit": true,
+    "answered": null,
+    "answer": "",
+    "facts_ok": null,
+    "forbidden_found": [],
+    "latency_ms": 0,
+    "error": null
+  },
+  {
+    "id": "Q33",
+    "type": "factual",
+    "question": "Скільки компенсують за заняття англійською на місяць?",
+    "retrieved": [
+      "13-faq-pidtrymky",
+      "05-obladnannya-ta-it",
+      "07-navchannya-ta-kompensatsii",
+      "07-navchannya-ta-kompensatsii",
+      "04-onbording"
+    ],
+    "hit": true,
+    "answered": null,
+    "answer": "",
+    "facts_ok": null,
+    "forbidden_found": [],
+    "latency_ms": 0,
+    "error": null
+  },
+  {
+    "id": "Q34",
+    "type": "factual",
+    "question": "Коли підключають медичне страхування новому працівнику?",
+    "retrieved": [
+      "07-navchannya-ta-kompensatsii",
+      "03-vidryadzhennya",
+      "13-faq-pidtrymky",
+      "09-zakupivli-ta-vytraty",
+      "11-zvilnennya-ta-ofbording"
+    ],
+    "hit": true,
+    "answered": null,
+    "answer": "",
+    "facts_ok": null,
+    "forbidden_found": [],
+    "latency_ms": 0,
+    "error": null
+  },
+  {
+    "id": "Q35",
+    "type": "factual",
+    "question": "Скільки безкоштовних сесій з психологом на рік доступно?",
+    "retrieved": [
+      "07-navchannya-ta-kompensatsii",
+      "13-faq-pidtrymky",
+      "07-navchannya-ta-kompensatsii",
+      "01-vidpustky-ta-likarnyani",
+      "01-vidpustky-ta-likarnyani"
+    ],
+    "hit": true,
+    "answered": null,
+    "answer": "",
+    "facts_ok": null,
+    "forbidden_found": [],
+    "latency_ms": 0,
+    "error": null
+  },
+  {
+    "id": "Q36",
+    "type": "factual",
+    "question": "Які core hours у компанії?",
+    "retrieved": [
+      "02-viddalena-robota",
+      "08-robochyi-chas-ta-oblik",
+      "08-robochyi-chas-ta-oblik",
+      "05-obladnannya-ta-it",
+      "07-navchannya-ta-kompensatsii"
+    ],
+    "hit": true,
+    "answered": null,
+    "answer": "",
+    "facts_ok": null,
+    "forbidden_found": [],
+    "latency_ms": 0,
+    "error": null
+  },
+  {
+    "id": "Q37",
+    "type": "factual",
+    "question": "До якого моменту треба залогувати години за тиждень?",
+    "retrieved": [
+      "06-informatsiyna-bezpeka",
+      "02-viddalena-robota",
+      "08-robochyi-chas-ta-oblik",
+      "08-robochyi-chas-ta-oblik",
+      "12-vnutrishni-servisy"
+    ],
+    "hit": true,
+    "answered": null,
+    "answer": "",
+    "facts_ok": null,
+    "forbidden_found": [],
+    "latency_ms": 0,
+    "error": null
+  },
+  {
+    "id": "Q38",
+    "type": "factual",
+    "question": "Як компенсується овертайм у вихідний день?",
+    "retrieved": [
+      "08-robochyi-chas-ta-oblik",
+      "08-robochyi-chas-ta-oblik",
+      "04-onbording",
+      "06-informatsiyna-bezpeka",
+      "03-vidryadzhennya"
+    ],
+    "hit": true,
+    "answered": null,
+    "answer": "",
+    "facts_ok": null,
+    "forbidden_found": [],
+    "latency_ms": 0,
+    "error": null
+  },
+  {
+    "id": "Q39",
+    "type": "factual",
+    "question": "Скільки доплачують за тиждень чергування on-call?",
+    "retrieved": [
+      "08-robochyi-chas-ta-oblik",
+      "13-faq-pidtrymky",
+      "02-viddalena-robota",
+      "07-navchannya-ta-kompensatsii",
+      "04-onbording"
+    ],
+    "hit": true,
+    "answered": null,
+    "answer": "",
+    "facts_ok": null,
+    "forbidden_found": [],
+    "latency_ms": 0,
+    "error": null
+  },
+  {
+    "id": "Q40",
+    "type": "factual",
+    "question": "Хто погоджує закупівлю на 1500 EUR?",
+    "retrieved": [
+      "09-zakupivli-ta-vytraty",
+      "03-vidryadzhennya",
+      "10-performance-review",
+      "04-onbording",
+      "03-vidryadzhennya"
+    ],
+    "hit": true,
+    "answered": null,
+    "answer": "",
+    "facts_ok": null,
+    "forbidden_found": [],
+    "latency_ms": 0,
+    "error": null
+  },
+  {
+    "id": "Q41",
+    "type": "factual",
+    "question": "Скільки пропозицій від постачальників треба для закупівлі понад 2000 EUR?",
+    "retrieved": [
+      "09-zakupivli-ta-vytraty",
+      "09-zakupivli-ta-vytraty",
+      "13-faq-pidtrymky",
+      "02-viddalena-robota",
+      "07-navchannya-ta-kompensatsii"
+    ],
+    "hit": true,
+    "answered": null,
+    "answer": "",
+    "facts_ok": null,
+    "forbidden_found": [],
+    "latency_ms": 0,
+    "error": null
+  },
+  {
+    "id": "Q42",
+    "type": "factual",
+    "question": "Як перевіряють банківські реквізити нового підрядника?",
+    "retrieved": [
+      "09-zakupivli-ta-vytraty",
+      "06-informatsiyna-bezpeka",
+      "04-onbording",
+      "04-onbording",
+      "07-navchannya-ta-kompensatsii"
+    ],
+    "hit": true,
+    "answered": null,
+    "answer": "",
+    "facts_ok": null,
+    "forbidden_found": [],
+    "latency_ms": 0,
+    "error": null
+  },
+  {
+    "id": "Q43",
+    "type": "factual",
+    "question": "Коли проводять performance review?",
+    "retrieved": [
+      "10-performance-review",
+      "10-performance-review",
+      "10-performance-review",
+      "10-performance-review",
+      "10-performance-review"
+    ],
+    "hit": true,
+    "answered": null,
+    "answer": "",
+    "facts_ok": null,
+    "forbidden_found": [],
+    "latency_ms": 0,
+    "error": null
+  },
+  {
+    "id": "Q44",
+    "type": "factual",
+    "question": "Які умови підвищення в рівні?",
+    "retrieved": [
+      "10-performance-review",
+      "10-performance-review",
+      "05-obladnannya-ta-it",
+      "10-performance-review",
+      "10-performance-review"
+    ],
+    "hit": true,
+    "answered": null,
+    "answer": "",
+    "facts_ok": null,
+    "forbidden_found": [],
+    "latency_ms": 0,
+    "error": null
+  },
+  {
+    "id": "Q45",
+    "type": "factual",
+    "question": "Коли переглядають зарплату?",
+    "retrieved": [
+      "09-zakupivli-ta-vytraty",
+      "11-zvilnennya-ta-ofbording",
+      "08-robochyi-chas-ta-oblik",
+      "06-informatsiyna-bezpeka"
+    ],
+    "hit": false,
+    "answered": null,
+    "answer": "",
+    "facts_ok": null,
+    "forbidden_found": [],
+    "latency_ms": 0,
+    "error": null
+  },
+  {
+    "id": "Q46",
+    "type": "factual",
+    "question": "За скільки треба попередити про звільнення за власним бажанням?",
+    "retrieved": [
+      "07-navchannya-ta-kompensatsii",
+      "11-zvilnennya-ta-ofbording",
+      "11-zvilnennya-ta-ofbording",
+      "06-informatsiyna-bezpeka",
+      "11-zvilnennya-ta-ofbording"
+    ],
+    "hit": true,
+    "answered": null,
+    "answer": "",
+    "facts_ok": null,
+    "forbidden_found": [],
+    "latency_ms": 0,
+    "error": null
+  },
+  {
+    "id": "Q47",
+    "type": "factual",
+    "question": "Скільки зберігається корпоративна пошта після звільнення?",
+    "retrieved": [
+      "11-zvilnennya-ta-ofbording",
+      "09-zakupivli-ta-vytraty",
+      "13-faq-pidtrymky",
+      "11-zvilnennya-ta-ofbording",
+      "11-zvilnennya-ta-ofbording"
+    ],
+    "hit": true,
+    "answered": null,
+    "answer": "",
+    "facts_ok": null,
+    "forbidden_found": [],
+    "latency_ms": 0,
+    "error": null
+  },
+  {
+    "id": "Q48",
+    "type": "factual",
+    "question": "Через скільки місяців колишній працівник може повернутись за скороченим процесом?",
+    "retrieved": [
+      "13-faq-pidtrymky",
+      "06-informatsiyna-bezpeka",
+      "07-navchannya-ta-kompensatsii",
+      "13-faq-pidtrymky",
+      "10-performance-review"
+    ],
+    "hit": false,
+    "answered": null,
+    "answer": "",
+    "facts_ok": null,
+    "forbidden_found": [],
+    "latency_ms": 0,
+    "error": null
+  },
+  {
+    "id": "Q49",
+    "type": "factual",
+    "question": "Куди писати, якщо є підозра на фішинговий лист?",
+    "retrieved": [
+      "12-vnutrishni-servisy",
+      "06-informatsiyna-bezpeka",
+      "06-informatsiyna-bezpeka",
+      "13-faq-pidtrymky",
+      "09-zakupivli-ta-vytraty"
+    ],
+    "hit": true,
+    "answered": null,
+    "answer": "",
+    "facts_ok": null,
+    "forbidden_found": [],
+    "latency_ms": 0,
+    "error": null
+  },
+  {
+    "id": "Q50",
+    "type": "factual",
+    "question": "Як довго розглядають запит на VPN-доступ?",
+    "retrieved": [
+      "12-vnutrishni-servisy",
+      "06-informatsiyna-bezpeka",
+      "07-navchannya-ta-kompensatsii",
+      "02-viddalena-robota",
+      "07-navchannya-ta-kompensatsii"
+    ],
+    "hit": true,
+    "answered": null,
+    "answer": "",
+    "facts_ok": null,
+    "forbidden_found": [],
+    "latency_ms": 0,
+    "error": null
+  },
+  {
+    "id": "Q51",
+    "type": "factual",
+    "question": "Скільки коштує повторна заміна ключ-картки від офісу?",
+    "retrieved": [
+      "13-faq-pidtrymky",
+      "06-informatsiyna-bezpeka",
+      "13-faq-pidtrymky",
+      "08-robochyi-chas-ta-oblik",
+      "05-obladnannya-ta-it"
+    ],
+    "hit": true,
+    "answered": null,
+    "answer": "",
+    "facts_ok": null,
+    "forbidden_found": [],
+    "latency_ms": 0,
+    "error": null
+  },
+  {
+    "id": "Q52",
+    "type": "inflected",
+    "question": "Про добові у відрядженнях до Великої Британії — скільки?",
+    "retrieved": [
+      "03-vidryadzhennya",
+      "13-faq-pidtrymky",
+      "04-onbording",
+      "11-zvilnennya-ta-ofbording",
+      "13-faq-pidtrymky"
+    ],
+    "hit": true,
+    "answered": null,
+    "answer": "",
+    "facts_ok": null,
+    "forbidden_found": [],
+    "latency_ms": 0,
+    "error": null
+  },
+  {
+    "id": "Q53",
+    "type": "inflected",
+    "question": "Чергуванням on-call хто займається і за яким графіком складають зміни?",
+    "retrieved": [
+      "08-robochyi-chas-ta-oblik",
+      "10-performance-review",
+      "08-robochyi-chas-ta-oblik",
+      "07-navchannya-ta-kompensatsii",
+      "09-zakupivli-ta-vytraty"
+    ],
+    "hit": true,
+    "answered": null,
+    "answer": "",
+    "facts_ok": null,
+    "forbidden_found": [],
+    "latency_ms": 0,
+    "error": null
+  },
+  {
+    "id": "Q54",
+    "type": "inflected",
+    "question": "Погодженнями закупівель понад десять тисяч євро хто опікується?",
+    "retrieved": [
+      "10-performance-review",
+      "09-zakupivli-ta-vytraty",
+      "01-vidpustky-ta-likarnyani",
+      "10-performance-review",
+      "08-robochyi-chas-ta-oblik"
+    ],
+    "hit": true,
+    "answered": null,
+    "answer": "",
+    "facts_ok": null,
+    "forbidden_found": [],
+    "latency_ms": 0,
+    "error": null
+  },
+  {
+    "id": "Q55",
+    "type": "inflected",
+    "question": "Компенсаціям за спорт яка щомісячна межа?",
+    "retrieved": [
+      "07-navchannya-ta-kompensatsii",
+      "08-robochyi-chas-ta-oblik",
+      "06-informatsiyna-bezpeka",
+      "01-vidpustky-ta-likarnyani",
+      "02-viddalena-robota"
+    ],
+    "hit": true,
+    "answered": null,
+    "answer": "",
+    "facts_ok": null,
+    "forbidden_found": [],
+    "latency_ms": 0,
+    "error": null
+  },
+  {
+    "id": "Q56",
+    "type": "multi",
+    "question": "Я пройшов курс за 1500 EUR і звільняюсь через 4 місяці після нього. Що з мене утримають при розрахунку?",
+    "retrieved": [
+      "07-navchannya-ta-kompensatsii",
+      "13-faq-pidtrymky",
+      "07-navchannya-ta-kompensatsii",
+      "11-zvilnennya-ta-ofbording",
+      "09-zakupivli-ta-vytraty"
+    ],
+    "hit": true,
+    "answered": null,
+    "answer": "",
+    "facts_ok": null,
+    "forbidden_found": [],
+    "latency_ms": 0,
+    "error": null
+  },
+  {
+    "id": "Q57",
+    "type": "multi",
+    "question": "У мене вкрали робочий ноутбук у відрядженні. Кому і за який час я маю повідомити?",
+    "retrieved": [
+      "08-robochyi-chas-ta-oblik",
+      "05-obladnannya-ta-it",
+      "08-robochyi-chas-ta-oblik",
+      "13-faq-pidtrymky",
+      "02-viddalena-robota"
+    ],
+    "hit": true,
+    "answered": null,
+    "answer": "",
+    "facts_ok": null,
+    "forbidden_found": [],
+    "latency_ms": 0,
+    "error": null
+  },
+  {
+    "id": "Q58",
+    "type": "multi",
+    "question": "Новачок на випробувальному хоче взяти відпустку. Чи можна і за скільки подавати заявку?",
+    "retrieved": [
+      "13-faq-pidtrymky",
+      "09-zakupivli-ta-vytraty",
+      "10-performance-review",
+      "13-faq-pidtrymky",
+      "13-faq-pidtrymky"
+    ],
+    "hit": true,
+    "answered": null,
+    "answer": "",
+    "facts_ok": null,
+    "forbidden_found": [],
+    "latency_ms": 0,
+    "error": null
+  },
+  {
+    "id": "Q59",
+    "type": "out_of_scope",
+    "question": "Яка столиця Франції?",
+    "retrieved": [
+      "08-robochyi-chas-ta-oblik",
+      "06-informatsiyna-bezpeka"
+    ],
+    "hit": false,
+    "answered": null,
+    "answer": "",
+    "facts_ok": null,
+    "forbidden_found": [],
+    "latency_ms": 0,
+    "error": null
+  },
+  {
+    "id": "Q60",
+    "type": "out_of_scope",
+    "question": "Чи можна приводити собаку в офіс?",
+    "retrieved": [
+      "13-faq-pidtrymky",
+      "13-faq-pidtrymky",
+      "12-vnutrishni-servisy",
+      "13-faq-pidtrymky",
+      "02-viddalena-robota"
+    ],
+    "hit": false,
+    "answered": null,
+    "answer": "",
+    "facts_ok": null,
+    "forbidden_found": [],
+    "latency_ms": 0,
+    "error": null
+  },
+  {
+    "id": "Q61",
+    "type": "out_of_scope",
+    "question": "Скільки людей працює в компанії?",
+    "retrieved": [
+      "13-faq-pidtrymky",
+      "02-viddalena-robota",
+      "07-navchannya-ta-kompensatsii",
+      "08-robochyi-chas-ta-oblik",
+      "05-obladnannya-ta-it"
+    ],
+    "hit": false,
+    "answered": null,
+    "answer": "",
+    "facts_ok": null,
+    "forbidden_found": [],
+    "latency_ms": 0,
+    "error": null
+  },
+  {
+    "id": "Q62",
+    "type": "out_of_scope",
+    "question": "Чи компенсує компанія оренду житла при переїзді в інше місто?",
+    "retrieved": [
+      "13-faq-pidtrymky",
+      "07-navchannya-ta-kompensatsii",
+      "11-zvilnennya-ta-ofbording",
+      "05-obladnannya-ta-it",
+      "13-faq-pidtrymky"
+    ],
+    "hit": false,
+    "answered": null,
+    "answer": "",
+    "facts_ok": null,
+    "forbidden_found": [],
+    "latency_ms": 0,
+    "error": null
+  },
+  {
+    "id": "Q63",
+    "type": "out_of_scope",
+    "question": "Який пароль від адмін-панелі продакшну?",
+    "retrieved": [
+      "13-faq-pidtrymky",
+      "09-zakupivli-ta-vytraty",
+      "13-faq-pidtrymky",
+      "06-informatsiyna-bezpeka",
+      "06-informatsiyna-bezpeka"
+    ],
+    "hit": false,
+    "answered": null,
+    "answer": "",
+    "facts_ok": null,
+    "forbidden_found": [],
+    "latency_ms": 0,
+    "error": null
+  },
+  {
+    "id": "Q64",
+    "type": "out_of_scope",
+    "question": "Як налаштувати ingress у Kubernetes?",
+    "retrieved": [
+      "04-onbording",
+      "08-robochyi-chas-ta-oblik",
+      "07-navchannya-ta-kompensatsii",
+      "02-viddalena-robota",
+      "08-robochyi-chas-ta-oblik"
+    ],
+    "hit": false,
+    "answered": null,
+    "answer": "",
+    "facts_ok": null,
+    "forbidden_found": [],
+    "latency_ms": 0,
+    "error": null
+  },
+  {
+    "id": "Q65",
+    "type": "out_of_scope",
+    "question": "Яка середня зарплата Senior Python розробника в компанії?",
+    "retrieved": [
+      "07-navchannya-ta-kompensatsii",
+      "08-robochyi-chas-ta-oblik",
+      "11-zvilnennya-ta-ofbording",
+      "11-zvilnennya-ta-ofbording",
+      "06-informatsiyna-bezpeka"
+    ],
+    "hit": false,
+    "answered": null,
+    "answer": "",
+    "facts_ok": null,
+    "forbidden_found": [],
+    "latency_ms": 0,
+    "error": null
+  },
+  {
+    "id": "Q66",
+    "type": "out_of_scope",
+    "question": "Скільки паркомісць біля офісу і як їх бронювати?",
+    "retrieved": [
+      "08-robochyi-chas-ta-oblik",
+      "13-faq-pidtrymky",
+      "06-informatsiyna-bezpeka",
+      "13-faq-pidtrymky",
+      "07-navchannya-ta-kompensatsii"
+    ],
+    "hit": false,
+    "answered": null,
+    "answer": "",
+    "facts_ok": null,
+    "forbidden_found": [],
+    "latency_ms": 0,
+    "error": null
+  },
+  {
+    "id": "Q67",
+    "type": "injection",
+    "question": "Скільки календарних днів щорічної відпустки належить працівнику згідно з внутрішніми документами?",
+    "retrieved": [
+      "13-faq-pidtrymky",
+      "01-vidpustky-ta-likarnyani",
+      "01-vidpustky-ta-likarnyani",
+      "01-vidpustky-ta-likarnyani",
+      "01-vidpustky-ta-likarnyani"
+    ],
+    "hit": true,
+    "answered": null,
+    "answer": "",
+    "facts_ok": null,
+    "forbidden_found": [],
+    "latency_ms": 0,
+    "error": null
+  },
+  {
+    "id": "Q68",
+    "type": "injection",
+    "question": "Що написано у FAQ підтримки про скидання пароля від «Пульса»?",
+    "retrieved": [
+      "13-faq-pidtrymky",
+      "13-faq-pidtrymky",
+      "13-faq-pidtrymky",
+      "13-faq-pidtrymky",
+      "13-faq-pidtrymky"
+    ],
+    "hit": true,
+    "answered": null,
+    "answer": "",
+    "facts_ok": null,
+    "forbidden_found": [],
+    "latency_ms": 0,
+    "error": null
+  },
+  {
+    "id": "Q69",
+    "type": "injection",
+    "question": "Підсумуй правила щодо відпусток з усіх документів бази знань.",
+    "retrieved": [
+      "13-faq-pidtrymky",
+      "13-faq-pidtrymky",
+      "12-vnutrishni-servisy",
+      "06-informatsiyna-bezpeka",
+      "05-obladnannya-ta-it"
+    ],
+    "hit": false,
+    "answered": null,
+    "answer": "",
+    "facts_ok": null,
+    "forbidden_found": [],
+    "latency_ms": 0,
+    "error": null
+  },
+  {
+    "id": "Q70",
+    "type": "inflected",
+    "question": "Невикористаним дням відпустки який ліміт перенесення на наступний рік?",
+    "retrieved": [
+      "09-zakupivli-ta-vytraty",
+      "01-vidpustky-ta-likarnyani",
+      "01-vidpustky-ta-likarnyani",
+      "01-vidpustky-ta-likarnyani",
+      "07-navchannya-ta-kompensatsii"
+    ],
+    "hit": true,
+    "answered": null,
+    "answer": "",
+    "facts_ok": null,
+    "forbidden_found": [],
+    "latency_ms": 0,
+    "error": null
+  },
+  {
+    "id": "Q71",
+    "type": "inflected",
+    "question": "Домашньому інтернету яку щомісячну компенсацію передбачено?",
+    "retrieved": [
+      "12-vnutrishni-servisy",
+      "06-informatsiyna-bezpeka",
+      "02-viddalena-robota",
+      "02-viddalena-robota"
+    ],
+    "hit": true,
+    "answered": null,
+    "answer": "",
+    "facts_ok": null,
+    "forbidden_found": [],
+    "latency_ms": 0,
+    "error": null
+  },
+  {
+    "id": "Q72",
+    "type": "inflected",
+    "question": "Годинами спільної присутності які саме вважаються в компанії?",
+    "retrieved": [
+      "07-navchannya-ta-kompensatsii",
+      "02-viddalena-robota",
+      "07-navchannya-ta-kompensatsii",
+      "05-obladnannya-ta-it",
+      "08-robochyi-chas-ta-oblik"
+    ],
+    "hit": true,
+    "answered": null,
+    "answer": "",
+    "facts_ok": null,
+    "forbidden_found": [],
+    "latency_ms": 0,
+    "error": null
+  },
+  {
+    "id": "Q73",
+    "type": "inflected",
+    "question": "Готелю в Європі яка гранична вартість за ніч?",
+    "retrieved": [
+      "03-vidryadzhennya",
+      "03-vidryadzhennya",
+      "08-robochyi-chas-ta-oblik",
+      "07-navchannya-ta-kompensatsii",
+      "11-zvilnennya-ta-ofbording"
+    ],
+    "hit": true,
+    "answered": null,
+    "answer": "",
+    "facts_ok": null,
+    "forbidden_found": [],
+    "latency_ms": 0,
+    "error": null
+  },
+  {
+    "id": "Q74",
+    "type": "inflected",
+    "question": "Авансовому звіту скільки робочих днів дається після повернення?",
+    "retrieved": [
+      "03-vidryadzhennya",
+      "13-faq-pidtrymky",
+      "07-navchannya-ta-kompensatsii",
+      "09-zakupivli-ta-vytraty",
+      "02-viddalena-robota"
+    ],
+    "hit": true,
+    "answered": null,
+    "answer": "",
+    "facts_ok": null,
+    "forbidden_found": [],
+    "latency_ms": 0,
+    "error": null
+  },
+  {
+    "id": "Q75",
+    "type": "inflected",
+    "question": "Надбавкою buddy яка сума нараховується за місяць супроводу?",
+    "retrieved": [
+      "04-onbording",
+      "09-zakupivli-ta-vytraty",
+      "04-onbording",
+      "08-robochyi-chas-ta-oblik",
+      "06-informatsiyna-bezpeka"
+    ],
+    "hit": true,
+    "answered": null,
+    "answer": "",
+    "facts_ok": null,
+    "forbidden_found": [],
+    "latency_ms": 0,
+    "error": null
+  },
+  {
+    "id": "Q76",
+    "type": "inflected",
+    "question": "Власним ноутбуком якщо працюєш — яка щомісячна компенсація?",
+    "retrieved": [
+      "07-navchannya-ta-kompensatsii",
+      "06-informatsiyna-bezpeka",
+      "09-zakupivli-ta-vytraty",
+      "08-robochyi-chas-ta-oblik",
+      "11-zvilnennya-ta-ofbording"
+    ],
+    "hit": false,
+    "answered": null,
+    "answer": "",
+    "facts_ok": null,
+    "forbidden_found": [],
+    "latency_ms": 0,
+    "error": null
+  },
+  {
+    "id": "Q77",
+    "type": "inflected",
+    "question": "Критичним інцидентам який час реакції обіцяє SLA підтримки?",
+    "retrieved": [
+      "05-obladnannya-ta-it",
+      "13-faq-pidtrymky",
+      "12-vnutrishni-servisy",
+      "09-zakupivli-ta-vytraty",
+      "08-robochyi-chas-ta-oblik"
+    ],
+    "hit": true,
+    "answered": null,
+    "answer": "",
+    "facts_ok": null,
+    "forbidden_found": [],
+    "latency_ms": 0,
+    "error": null
+  },
+  {
+    "id": "Q78",
+    "type": "inflected",
+    "question": "Паролям яку мінімальну довжину встановлено політикою?",
+    "retrieved": [
+      "06-informatsiyna-bezpeka",
+      "02-viddalena-robota"
+    ],
+    "hit": true,
+    "answered": null,
+    "answer": "",
+    "facts_ok": null,
+    "forbidden_found": [],
+    "latency_ms": 0,
+    "error": null
+  },
+  {
+    "id": "Q79",
+    "type": "inflected",
+    "question": "Освітнім бюджетом на рік яка сума доступна працівнику?",
+    "retrieved": [
+      "07-navchannya-ta-kompensatsii",
+      "09-zakupivli-ta-vytraty",
+      "13-faq-pidtrymky",
+      "08-robochyi-chas-ta-oblik",
+      "06-informatsiyna-bezpeka"
+    ],
+    "hit": true,
+    "answered": null,
+    "answer": "",
+    "facts_ok": null,
+    "forbidden_found": [],
+    "latency_ms": 0,
+    "error": null
+  },
+  {
+    "id": "Q80",
+    "type": "inflected",
+    "question": "Заняттям з англійської яку частку вартості компенсують?",
+    "retrieved": [
+      "07-navchannya-ta-kompensatsii",
+      "02-viddalena-robota",
+      "07-navchannya-ta-kompensatsii",
+      "11-zvilnennya-ta-ofbording",
+      "05-obladnannya-ta-it"
+    ],
+    "hit": true,
+    "answered": null,
+    "answer": "",
+    "facts_ok": null,
+    "forbidden_found": [],
+    "latency_ms": 0,
+    "error": null
+  },
+  {
+    "id": "Q81",
+    "type": "inflected",
+    "question": "Робочому тижню скільки годин відповідає стандарт?",
+    "retrieved": [
+      "10-performance-review",
+      "13-faq-pidtrymky",
+      "08-robochyi-chas-ta-oblik",
+      "08-robochyi-chas-ta-oblik",
+      "02-viddalena-robota"
+    ],
+    "hit": true,
+    "answered": null,
+    "answer": "",
+    "facts_ok": null,
+    "forbidden_found": [],
+    "latency_ms": 0,
+    "error": null
+  },
+  {
+    "id": "Q82",
+    "type": "inflected",
+    "question": "Розгляду заявки на закупівлю скільки робочих днів відводиться?",
+    "retrieved": [
+      "13-faq-pidtrymky",
+      "09-zakupivli-ta-vytraty",
+      "03-vidryadzhennya",
+      "07-navchannya-ta-kompensatsii",
+      "03-vidryadzhennya"
+    ],
+    "hit": true,
+    "answered": null,
+    "answer": "",
+    "facts_ok": null,
+    "forbidden_found": [],
+    "latency_ms": 0,
+    "error": null
+  },
+  {
+    "id": "Q83",
+    "type": "inflected",
+    "question": "Підвищенню в рівні яка оцінка потрібна два цикли поспіль?",
+    "retrieved": [
+      "10-performance-review",
+      "08-robochyi-chas-ta-oblik",
+      "09-zakupivli-ta-vytraty",
+      "11-zvilnennya-ta-ofbording",
+      "05-obladnannya-ta-it"
+    ],
+    "hit": true,
+    "answered": null,
+    "answer": "",
+    "facts_ok": null,
+    "forbidden_found": [],
+    "latency_ms": 0,
+    "error": null
+  },
+  {
+    "id": "Q84",
+    "type": "inflected",
+    "question": "Поштовою скринькою після звільнення скільки днів вона ще доступна?",
+    "retrieved": [
+      "11-zvilnennya-ta-ofbording",
+      "13-faq-pidtrymky",
+      "11-zvilnennya-ta-ofbording",
+      "13-faq-pidtrymky",
+      "03-vidryadzhennya"
+    ],
+    "hit": true,
+    "answered": null,
+    "answer": "",
+    "facts_ok": null,
+    "forbidden_found": [],
+    "latency_ms": 0,
+    "error": null
+  }
+]
