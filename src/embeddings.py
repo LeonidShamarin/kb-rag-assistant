@@ -148,7 +148,12 @@ class SentenceTransformerEmbeddings(BaseEmbedder):
 
         self._model = SentenceTransformer(model)
         self.name = model
-        self.dim = self._model.get_sentence_embedding_dimension()
+        # sentence-transformers 5.x перейменував метод; стара назва ще працює,
+        # але сипле FutureWarning у кожному прогоні.
+        get_dim = getattr(
+            self._model, "get_embedding_dimension", self._model.get_sentence_embedding_dimension
+        )
+        self.dim = get_dim()
         # Префікси e5 — не косметика: без них модель втрачає частину якості,
         # бо навчалась саме на такій асиметрії.
         self._needs_prefix = "e5" in model.lower()
