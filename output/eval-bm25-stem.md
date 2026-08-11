@@ -1,18 +1,18 @@
 # Результат eval
 
-Конфігурація: `bm25+structural+stem+hash-256`, top_k=5, модель генерації `gemini-3.5-flash-lite`, embeddings `hash-256`.
+Конфігурація: `bm25+structural+stem+gemini-embedding-001`, top_k=5, модель генерації `gemini-3.5-flash-lite`, embeddings `gemini-embedding-001`.
 Режим: лише пошук.
-Питань: 84.
+Питань: 122.
 
 ## Підсумок
 
 | Метрика | Значення |
 |---|---|
-| questions | 84 |
+| questions | 122 |
 | errors | 0 |
-| hit@k | 0.974 |
-| recall@k | 0.967 |
-| mrr | 0.907 |
+| hit@k | 0.98 |
+| recall@k | 0.955 |
+| mrr | 0.91 |
 
 ## Провали
 
