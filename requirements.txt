@@ -11,3 +11,9 @@ uvicorn[standard]>=0.32
 httpx>=0.27
 pytest>=8.3
 pytest-asyncio>=0.24
+
+# Embeddings рахуються локально моделлю intfloat/multilingual-e5-small, а не
+# через Gemini API: саме ця модель дає hit@5 = 99.0% проти 58.4% в англомовної
+# (див. README). Тягне torch, але в Docker-образ ставиться CPU-збірка з
+# окремого індексу PyTorch — див. Dockerfile, це різниця 2.5 ГБ проти ~700 МБ.
+sentence-transformers>=3.0

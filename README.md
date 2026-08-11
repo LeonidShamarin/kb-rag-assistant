@@ -33,29 +33,16 @@ LLM — фейковим клієнтом, тому набір проходит�
 
 Два режими. Різниця в тому, що вміє система, а не в тому, як її запускати.
 
-### Повний режим — з ключем Gemini
+### Офлайн-режим — без ключа
 
-Пошук + генерація відповідей. Це те, що працює у веб-інтерфейсі.
+Повністю локально, на HF-моделях. Саме в цьому режимі зміряні **всі числа нижче**:
+`eval` і `matrix` не потребують жодного мережевого виклику. У цьому ж режимі
+працює задеплоєний Space.
 
 ```bash
 python -m venv .venv
 .venv/Scripts/pip install -r requirements.txt     # Linux/macOS: .venv/bin/pip
-
-cp .env.example .env
-# вписати у .env: GEMINI_API_KEY=<ключ з https://aistudio.google.com/apikey>
-
-.venv/Scripts/python main.py ingest               # побудувати індекс
-.venv/Scripts/python main.py ask "скільки днів відпустки?"
-.venv/Scripts/python main.py serve                # HTTP + веб-UI на :7860
-```
-
-### Офлайн-режим — без ключа
-
-Повністю локально, на HF-моделях. Саме в цьому режимі зміряні **всі числа нижче**:
-`eval` і `matrix` не потребують жодного мережевого виклику.
-
-```bash
-.venv/Scripts/pip install -r requirements-local.txt          # тягне torch, ~2 ГБ
+                                                  # тягне torch, ~2 ГБ
 
 .venv/Scripts/python main.py ingest --index index-e5s --embed-provider st \
     --embed-model intfloat/multilingual-e5-small
@@ -64,6 +51,23 @@ cp .env.example .env
 .venv/Scripts/python main.py serve --index index-e5s --embed-provider st \
     --embed-model intfloat/multilingual-e5-small
 ```
+
+### Повний режим — з ключем Gemini
+
+Додає генерацію відповідей поверх того самого пошуку.
+
+```bash
+cp .env.example .env
+# вписати у .env: GEMINI_API_KEY=<ключ з https://aistudio.google.com/apikey>
+
+.venv/Scripts/python main.py ask "скільки днів відпустки?" --index index-e5s \
+    --embed-provider st --embed-model intfloat/multilingual-e5-small
+```
+
+Прапорці `--embed-provider st --embed-model ...` вказуються явно, бо дефолт CLI —
+`gemini`: він лишився таким, щоб `matrix` міг порівнювати провайдерів між собою
+на рівних. Docker-образ задає ці ж значення через змінні `EMBED_PROVIDER` /
+`EMBED_MODEL`, тому в контейнері їх писати не треба.
 
 **Що саме не працює без ключа:** `serve` підніметься і віддасть веб-інтерфейс,
 `/health` покаже `generation_enabled: false`, але `POST /ask` поверне **503** —
@@ -102,12 +106,19 @@ docker run --rm -p 7860:7860 --env-file .env kb-rag
 ```
 
 Індекс будується на старті контейнера, а не при збірці: інакше в образ потрапили б
-вектори, прив'язані до конкретної версії моделі. В образі немає `torch` —
-контейнерний режим працює на Gemini-embeddings, локальні моделі лишаються
-інструментом експерименту.
+вектори, прив'язані до конкретної версії моделі. А от **ваги моделі** в образі є —
+вони кладуться при збірці, щоб холодний старт не залежав від доступності
+huggingface.co.
+
+`torch` ставиться з CPU-індексу PyTorch, а не з PyPI: звичайний `pip install torch`
+дотягує пакети `nvidia-cu*` на ~1.8 ГБ, які на CPU-Space не виконуються жодного
+разу. Образ виходить ~700 МБ замість 2.5 ГБ.
 
 Порт береться з `PORT` (дефолт 7860) — саме його очікує Hugging Face Spaces від
 Docker-контейнера, і той самий образ працює локально без змін.
+
+Без `GEMINI_API_KEY` контейнер усе одно піднімається: пошук працює повністю,
+`/health` показує `generation_enabled: false`, `POST /ask` віддає 503.
 
 ---
 
@@ -367,10 +378,11 @@ breaker, бо `retryDelay` у відповіді бреше — його Gemini 
   прогоні і 23 мс в іншому просто через стан машини.
 - **FAISS не дає приросту.** На 95 чанках лінійний numpy-скан швидший за побудову
   індексу. Інтерфейс (`--faiss`) є, щоб було що перевірити, а не тому що потрібен.
-- **Продакшн-режим і режим вимірювання використовують різні embeddings.** Усі числа
-  вище — на `multilingual-e5-small` локально. Docker-образ і Space працюють на
-  `gemini-embedding-001`, бо `torch` у контейнері — це +2 ГБ. Тобто зміряна
-  конфігурація і задеплоєна — не та сама, і різницю між ними я не міряв.
+- **Числа зміряні на `gemini-embedding-001` — не зміряні.** Задеплоєна
+  конфігурація тепер збігається з виміряною (`multilingual-e5-small` і там, і там),
+  але зворотного порівняння немає: скільки дав би Gemini-embedding на цьому ж
+  наборі, я не міряв. Твердження «e5-small кращий за все» з таблиць не випливає —
+  з них випливає лише те, що він кращий за `all-MiniLM-L6-v2`.
 
 ---
 

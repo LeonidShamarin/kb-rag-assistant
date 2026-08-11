@@ -134,8 +134,9 @@ class GeminiEmbeddings(BaseEmbedder):
 
 class SentenceTransformerEmbeddings(BaseEmbedder):
     """
-    Локальні моделі. Ставиться окремо: `pip install -r requirements-local.txt`
-    (тягне torch, ~2 ГБ — тому не в основних залежностях і не в Docker-образі).
+    Локальні моделі. Робочий провайдер сервісу: multilingual-e5-small знаходить
+    потрібний документ у топ-5 в 99.0% питань проти 58.4% в англомовної моделі
+    тієї самої розмірності (див. README). Залежність — у requirements.txt.
     """
 
     def __init__(self, model: str = "intfloat/multilingual-e5-small"):
@@ -143,7 +144,7 @@ class SentenceTransformerEmbeddings(BaseEmbedder):
             from sentence_transformers import SentenceTransformer
         except ImportError as exc:  # pragma: no cover
             raise ImportError(
-                "Потрібен sentence-transformers: pip install -r requirements-local.txt"
+                "Потрібен sentence-transformers: pip install -r requirements.txt"
             ) from exc
 
         self._model = SentenceTransformer(model)
