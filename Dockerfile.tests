@@ -1,0 +1,25 @@
+# Образ ТІЛЬКИ для запуску тестів під лімітом памʼяті (scripts/run_tests_capped.ps1).
+# Робочий образ описаний у Dockerfile і до цього файлу стосунку не має.
+#
+# Різниця одна, але принципова: тут НЕМАЄ torch і sentence-transformers.
+# Набір тестів навмисно не торкається справжніх ваг — embeddings підмінені
+# детермінованим hashing-провайдером, а `sentence_transformers` імпортується
+# ліниво всередині функції (src/embeddings.py), тож без нього все проходить.
+#
+# Ціна питання: робочий образ із torch і запеченою моделлю — це ~700 МБ і
+# хвилини збірки. Тестовий — десятки мегабайт і секунди. Для стелі памʼяті,
+# яку хочеться вмикати на кожен прогін, це різниця між «завжди» і «ніколи».
+FROM python:3.11-slim
+
+WORKDIR /work
+
+# sentence-transformers викидається з переліку: саме він тягне torch.
+COPY requirements.txt .
+RUN grep -v -i "sentence-transformers" requirements.txt > requirements-tests.txt \
+    && pip install --no-cache-dir -r requirements-tests.txt
+
+ENV PYTHONDONTWRITEBYTECODE=1
+
+# Код монтується томом при запуску — образ перезбирається лише коли
+# змінюються залежності.
+CMD ["python", "-m", "pytest", "-q"]
