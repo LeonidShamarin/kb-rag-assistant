@@ -18,6 +18,7 @@ import os
 from dataclasses import dataclass
 from typing import TypeVar
 
+from google.genai import errors as genai_errors
 from pydantic import BaseModel, ValidationError
 
 from src.backoff import Breaker, DailyQuotaExceeded, RateLimiter, TransportError, call_with_backoff
@@ -159,7 +160,7 @@ class FallbackLLM:
         for name, client in self.members:
             try:
                 return await client.generate(system_prompt, user_prompt, schema, max_repairs)
-            except (TransportError, DailyQuotaExceeded) as exc:
+            except (TransportError, DailyQuotaExceeded, genai_errors.APIError) as exc:
                 errors.append(f"{name}: {str(exc)[:150]}")
         raise TransportError("усі Gemini-ключі відмовили -> " + " | ".join(errors))
 
