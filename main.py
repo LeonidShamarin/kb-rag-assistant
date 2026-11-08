@@ -94,7 +94,7 @@ def _api_key(required: bool = True) -> str | None:
 def _build(config: RagConfig, index_dir: Path, use_faiss: bool = False):
     """Складає пайплайн з готового індексу."""
     from src.embeddings import build_embedder
-    from src.llm import GeminiLLM
+    from src.llm import build_llm
     from src.pipeline import RagPipeline
     from src.store import KnowledgeIndex
 
@@ -103,7 +103,7 @@ def _build(config: RagConfig, index_dir: Path, use_faiss: bool = False):
     if use_faiss:
         index.enable_faiss()
     embedder = build_embedder(config.embed_provider, config.embed_model, key)
-    llm = GeminiLLM(key, config.gen_model, config.temperature, config.rpm) if key else None
+    llm = build_llm(config.gen_model, config.temperature, config.rpm)
     return RagPipeline(index, embedder, config, llm)
 
 
@@ -243,14 +243,14 @@ RERANK_ROW = ("hybrid + rerank", dict(retriever="hybrid", chunking="structural",
 async def cmd_matrix(args: argparse.Namespace) -> None:
     from src.embeddings import build_embedder
     from src.evaluate import evaluate, load_questions, summarize, summary_table
-    from src.llm import GeminiLLM
+    from src.llm import build_llm
     from src.pipeline import RagPipeline, ingest
     from src.store import KnowledgeIndex
 
     base = config_from(args)
     key = _api_key(required=base.embed_provider == "gemini")
     embedder = build_embedder(base.embed_provider, base.embed_model, key)
-    llm = GeminiLLM(key, base.gen_model, base.temperature, base.rpm) if key else None
+    llm = build_llm(base.gen_model, base.temperature, base.rpm)
 
     rows = list(MATRIX)
     if args.with_rerank:

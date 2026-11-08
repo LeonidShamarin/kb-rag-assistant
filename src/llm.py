@@ -14,12 +14,13 @@ from __future__ import annotations
 
 import json
 import logging
+import os
 from dataclasses import dataclass
 from typing import TypeVar
 
 from pydantic import BaseModel, ValidationError
 
-from src.backoff import Breaker, RateLimiter, call_with_backoff
+from src.backoff import Breaker, DailyQuotaExceeded, RateLimiter, TransportError, call_with_backoff
 
 logger = logging.getLogger(__name__)
 
@@ -129,3 +130,60 @@ class GeminiLLM:
                 )
 
         raise InvalidLLMOutput(f"Валідна відповідь не отримана: {last_error}")
+
+
+# --- фолбек між кількома Gemini-ключами --------------------------------------
+#
+# kb-rag і генерацію, і embeddings робить через Gemini, тож крос-провайдерний
+# фолбек тут не підходить (ембединги іншого провайдера дали б несумісні вектори
+# й зіпсували індекс). Натомість ротуємо Gemini-ключі: основний GEMINI_API_KEY,
+# далі ключі з ключі2.txt (GEMINI_API_KEY_2/_3) в останню чергу. Перемикаємося на
+# транспортному збої та денній квоті; невалідний JSON (InvalidLLMOutput) — це
+# зміст, його лікує self-repair, а не зміна ключа. Кожен ключ має свій Breaker.
+
+_GEMINI_KEY_VARS = ("GEMINI_API_KEY", "GEMINI_API_KEY_2", "GEMINI_API_KEY_3")
+
+
+class FallbackLLM:
+    """Пробує Gemini-ключі по черзі; на `TransportError`/`DailyQuotaExceeded`
+    бере наступний. Кидає помилку лише коли відмовили всі ключі."""
+
+    def __init__(self, members: list[tuple[str, GeminiLLM]]):
+        if not members:
+            raise ValueError("порожній ланцюжок Gemini-ключів")
+        self.members = members
+
+    async def generate(self, system_prompt: str, user_prompt: str, schema: type[T],
+                        max_repairs: int = 1) -> LLMResult:
+        errors: list[str] = []
+        for name, client in self.members:
+            try:
+                return await client.generate(system_prompt, user_prompt, schema, max_repairs)
+            except (TransportError, DailyQuotaExceeded) as exc:
+                errors.append(f"{name}: {str(exc)[:150]}")
+        raise TransportError("усі Gemini-ключі відмовили -> " + " | ".join(errors))
+
+
+def _gemini_keys(env: dict) -> list[tuple[str, str]]:
+    out: list[tuple[str, str]] = []
+    seen: set[str] = set()
+    for var in _GEMINI_KEY_VARS:
+        key = (env.get(var) or "").strip()
+        if key and key not in seen:
+            seen.add(key)
+            out.append((var, key))
+    return out
+
+
+def build_llm(model: str, temperature: float = 0.0, rpm: int = 5, *, env: dict | None = None):
+    """Збирає генеративний клієнт із ланцюжком Gemini-ключів, або `None`, якщо
+    жодного ключа немає (як і раніше). Один ключ — звичайний `GeminiLLM`, кілька —
+    обгортка з фолбеком."""
+    env = os.environ if env is None else env
+    keys = _gemini_keys(env)
+    if not keys:
+        return None
+    members = [(f"gemini:{var}", GeminiLLM(key, model, temperature, rpm)) for var, key in keys]
+    if len(members) == 1:
+        return members[0][1]
+    return FallbackLLM(members)

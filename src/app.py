@@ -20,7 +20,7 @@ from pydantic import BaseModel, Field
 
 from src.config import RagConfig
 from src.embeddings import build_embedder
-from src.llm import GeminiLLM
+from src.llm import build_llm
 from src.pipeline import RagPipeline
 from src.schema import Answer
 from src.store import KnowledgeIndex
@@ -40,11 +40,7 @@ def build_pipeline(index_dir: Path, config: RagConfig) -> RagPipeline:
     index = KnowledgeIndex.load(index_dir)
     api_key = os.environ.get("GEMINI_API_KEY")
     embedder = build_embedder(config.embed_provider, config.embed_model, api_key)
-    llm = (
-        GeminiLLM(api_key, config.gen_model, config.temperature, config.rpm)
-        if api_key
-        else None
-    )
+    llm = build_llm(config.gen_model, config.temperature, config.rpm)
     return RagPipeline(index, embedder, config, llm)
 
 
