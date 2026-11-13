@@ -19,3 +19,4 @@ index-*/
 .claude.json
 .claude.json.backup
 CLAUDE.local.md
+certs/*.crt

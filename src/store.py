@@ -39,6 +39,7 @@ class KnowledgeIndex:
         self.vectors = vectors
         self.meta = meta
         self._faiss = None
+        self._pg = None
 
     # --- пошук ---
 
@@ -46,6 +47,8 @@ class KnowledgeIndex:
         """Косинусна близькість. Вектори нормалізовані, тому це просто скалярний добуток."""
         if not self.chunks:
             return []
+        if self._pg is not None:
+            return self._pg.search(query_vector, top_k)
         if self._faiss is not None:
             scores, idx = self._faiss.search(query_vector.reshape(1, -1).astype("float32"), top_k)
             return [(int(i), float(s)) for i, s in zip(idx[0], scores[0]) if i >= 0]
@@ -65,6 +68,19 @@ class KnowledgeIndex:
         index.add(self.vectors.astype("float32"))
         self._faiss = index
         return True
+
+    def enable_pgvector(self, dsn: str, table: str = "kb_chunks", hnsw: bool = False, store=None) -> None:
+        """
+        Перемикає щільний пошук на Postgres + pgvector (src/pgstore.py).
+        Таблиця заливається з цього індексу, якщо там ще не він. `store`
+        дозволяє підставити готовий об'єкт (у тестах це фейк без бази).
+        """
+        if store is None:
+            from src.pgstore import PgVectorStore
+
+            store = PgVectorStore(dsn, table=table, hnsw=hnsw)
+        store.sync([c.chunk_id for c in self.chunks], self.vectors, self.meta)
+        self._pg = store
 
     # --- персистентність ---
 

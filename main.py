@@ -64,6 +64,13 @@ def add_config_args(parser: argparse.ArgumentParser) -> None:
     parser.add_argument("--rpm", type=int, default=DEFAULT_RPM, help="0 — без обмеження")
     parser.add_argument("--min-score", type=float, default=0.55, help="Поріг відмови (косинус)")
     parser.add_argument("--faiss", action="store_true", help="Використати FAISS замість numpy")
+    parser.add_argument(
+        "--pgvector",
+        metavar="DSN",
+        default=os.environ.get("PGVECTOR_DSN"),
+        help="Шукати в Postgres + pgvector (напр. postgresql://kb:kb@localhost:5434/kb); env PGVECTOR_DSN",
+    )
+    parser.add_argument("--pgvector-hnsw", action="store_true", help="HNSW-індекс замість точного пошуку")
 
 
 def config_from(args: argparse.Namespace) -> RagConfig:
@@ -91,7 +98,13 @@ def _api_key(required: bool = True) -> str | None:
     return key
 
 
-def _build(config: RagConfig, index_dir: Path, use_faiss: bool = False):
+def _build(
+    config: RagConfig,
+    index_dir: Path,
+    use_faiss: bool = False,
+    pgvector_dsn: str | None = None,
+    pgvector_hnsw: bool = False,
+):
     """Складає пайплайн з готового індексу."""
     from src.embeddings import build_embedder
     from src.llm import build_llm
@@ -100,7 +113,9 @@ def _build(config: RagConfig, index_dir: Path, use_faiss: bool = False):
 
     key = _api_key(required=config.embed_provider == "gemini")
     index = KnowledgeIndex.load(index_dir)
-    if use_faiss:
+    if pgvector_dsn:
+        index.enable_pgvector(pgvector_dsn, hnsw=pgvector_hnsw)
+    elif use_faiss:
         index.enable_faiss()
     embedder = build_embedder(config.embed_provider, config.embed_model, key)
     llm = build_llm(config.gen_model, config.temperature, config.rpm)
@@ -127,7 +142,7 @@ async def cmd_ingest(args: argparse.Namespace) -> None:
 
 
 async def cmd_ask(args: argparse.Namespace) -> None:
-    pipeline = _build(config_from(args), args.index, args.faiss)
+    pipeline = _build(config_from(args), args.index, args.faiss, args.pgvector, args.pgvector_hnsw)
     answer = await pipeline.ask(args.question)
 
     if args.json:
@@ -167,7 +182,7 @@ async def cmd_eval(args: argparse.Namespace) -> None:
     from src.evaluate import evaluate, failures_markdown, load_questions, summarize
 
     config = config_from(args)
-    pipeline = _build(config, args.index, args.faiss)
+    pipeline = _build(config, args.index, args.faiss, args.pgvector, args.pgvector_hnsw)
     known = {c.doc_id for c in pipeline.index.chunks}
     questions = load_questions(args.questions, known)
 

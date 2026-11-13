@@ -13,6 +13,14 @@ FROM python:3.11-slim
 
 WORKDIR /work
 
+# Локальна машина: антивірус перехоплює TLS. Довіряємо саме його кореневому
+# сертифікату (публічна частина, тека certs/ не йде в git), а не вимикаємо
+# перевірку. У CI тека порожня, і цей крок нічого не робить.
+COPY certs/ /usr/local/share/ca-certificates/
+RUN if ls /usr/local/share/ca-certificates/*.crt >/dev/null 2>&1; then \
+      cat /usr/local/share/ca-certificates/*.crt >> /etc/ssl/certs/ca-certificates.crt; fi
+ENV PIP_CERT=/etc/ssl/certs/ca-certificates.crt
+
 # sentence-transformers викидається з переліку: саме він тягне torch.
 COPY requirements.txt .
 RUN grep -v -i "sentence-transformers" requirements.txt > requirements-tests.txt \

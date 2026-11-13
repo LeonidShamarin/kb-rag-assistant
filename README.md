@@ -308,9 +308,46 @@ src/
   backoff.py       rate limiter / backoff / daily quota circuit breaker
   pipeline.py      putting it all together
   evaluate.py      metrics and reports
-  store.py         index: vectors + chunks + metadata (numpy or FAISS)
+  store.py         index: vectors + chunks + metadata (numpy, FAISS or pgvector)
+  pgstore.py       Postgres + pgvector backend for dense search
   app.py           FastAPI
 ```
+
+### Postgres + pgvector backend
+
+The file index (`index-*/`) stays the source of truth; `--pgvector DSN` copies it into a Postgres
+table and dense search becomes one SQL query (`ORDER BY embedding <#> $query LIMIT k`). Nothing
+else in the pipeline changes: BM25, RRF fusion, refusal and citations work the same way.
+
+```bash
+docker run -d --name kb-pgvector --memory 512m --memory-swap 512m \
+  -e POSTGRES_USER=kb -e POSTGRES_PASSWORD=kb -e POSTGRES_DB=kb -p 5434:5432 pgvector/pgvector:pg16
+python main.py ask "скільки днів відпустки?" --index index-e5s --embed-provider st \
+  --embed-model intfloat/multilingual-e5-small --pgvector postgresql://kb:kb@127.0.0.1:5434/kb
+python scripts/bench_pgvector.py --dsn postgresql://kb:kb@127.0.0.1:5434/kb
+```
+
+- **The upload is idempotent.** A fingerprint of the index (model, build time, chunk count,
+  dimension) is stored next to the table; a second run with the same index writes nothing, a rebuilt
+  index replaces the table inside one transaction, so a reader never sees it half-filled.
+- **`<#>` (inner product), not `<=>` (cosine distance).** The vectors are already normalised, so
+  the score is the same number the numpy backend returns, and the two can be compared directly.
+- **Exact search by default, HNSW with `--pgvector-hnsw`.** In exact mode index scans are switched
+  off for the query, so a leftover HNSW index cannot quietly make it approximate.
+
+Measured on the same 122 golden questions (`output/pgvector-bench.md`), dense part only, top 5:
+
+| backend | hit@5 | top-5 overlap with numpy | p50 | p95 |
+|---|---|---|---|---|
+| numpy (exact) | 100/101 (99.0%) | reference | 0.01 ms | 0.01 ms |
+| pgvector, exact | 100/101 (99.0%) | 100% | 2.60 ms | 3.14 ms |
+| pgvector, HNSW (ef_search=40) | 100/101 (99.0%) | 100% | 2.62 ms | 3.30 ms |
+
+Same quality, ~2.6 ms of network and SQL per query instead of a matrix product. On 95 chunks that is
+pure overhead, and HNSW buys nothing because there is nothing to skip. The point is where the index
+lives: in a database that an API, a background ingest job and an admin panel can share, instead of a
+file next to one process. Tests: 4 without a database, 3 against a real pgvector (`PGVECTOR_DSN`),
+the latter also in CI through a `pgvector/pgvector:pg16` service container.
 
 ### Three things done on purpose
 
@@ -384,6 +421,14 @@ What I actually ran into, not a hypothetical list.
   another just because of the machine's state.
 - **FAISS gives no gain.** On 95 chunks a linear numpy scan is faster than building the index. The
   interface (`--faiss`) exists so there is something to check, not because it is needed.
+- **`localhost` cost 50 ms per pgvector query on Windows.** The first benchmark showed p50 = 49.99 ms
+  for both exact and HNSW, which looked like a slow database. The same run against `127.0.0.1` gave
+  2.60 ms. The connection is opened once per run, so this is not name resolution per query: with
+  `localhost` the traffic takes a different path to the container, and every round trip pays a
+  constant ~47 ms (the size of a Nagle / delayed-ACK stall). I did not confirm the exact mechanism;
+  what is measured is the fix. The DSNs in this README use `127.0.0.1` for that reason.
+- **The live demo does not use pgvector.** The Hugging Face Space has no database next to it, and a
+  hosted one would mean another account; the Space keeps the numpy backend.
 - **No numbers for `gemini-embedding-001`.** The deployed configuration now matches the measured
   one (`multilingual-e5-small` in both places), but there is no reverse comparison: I did not
   measure what Gemini embeddings would give on this set. The tables do not support "e5-small beats
