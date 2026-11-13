@@ -349,6 +349,15 @@ lives: in a database that an API, a background ingest job and an admin panel can
 file next to one process. Tests: 4 without a database, 3 against a real pgvector (`PGVECTOR_DSN`),
 the latter also in CI through a `pgvector/pgvector:pg16` service container.
 
+**The same corpus in n8n.** There is also a no-code version of this assistant, built from n8n nodes
+(screenshot on the [portfolio](https://portfolio-shamarin-leonid.vercel.app/projects#n8n-workflows)):
+it loads the same 13 documents, embeds 55 chunks with Gemini into Postgres through the *Postgres
+PGVector Store* node and answers through an AI Agent on Groq. Two things differ from the Python
+version and are worth knowing: the n8n node has no "clear before insert" option, so the workflow
+drops the table first, otherwise every reload duplicates the base; and when Gemini hits its
+per-minute limit, the embeddings node returns empty vectors **without an error**, so the failure
+only surfaces one step later in Postgres as `vector must have at least 1 dimension`.
+
 ### Three things done on purpose
 
 **A refusal costs zero tokens.** If the best chunk has a cosine below `min_dense_score` (0.55), the
